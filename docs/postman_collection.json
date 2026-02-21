@@ -1,0 +1,104 @@
+{
+    "info": {
+        "name": "Blog Management API",
+        "description": "Complete CRUD API testing",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8080/api"
+        }
+    ],
+    "item": [
+        {
+            "name": "Categories",
+            "item": [
+                {
+                    "name": "Create Category",
+                    "request": {
+                        "method": "POST",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\": \"Java\", \"description\": \"Java Programming\"}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/categories",
+                            "host": ["{{base_url}}"],
+                            "path": ["categories"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Categories",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/categories",
+                            "host": ["{{base_url}}"],
+                            "path": ["categories"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Posts",
+            "item": [
+                {
+                    "name": "Create Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\": \"Spring Boot Guide\", \"content\": \"Learn Spring Boot...\", \"author\": \"Ayush\", \"categoryId\": 1}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/posts",
+                            "host": ["{{base_url}}"],
+                            "path": ["posts"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Posts (Paginated)",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/posts?page=0&size=5",
+                            "host": ["{{base_url}}"],
+                            "path": ["posts"],
+                            "query": [
+                                {"key": "page", "value": "0"},
+                                {"key": "size", "value": "5"}
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Comments",
+            "item": [
+                {
+                    "name": "Create Comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"content\": \"Great post!\", \"author\": \"User1\"}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/comments/post/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["comments", "post", "1"]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
